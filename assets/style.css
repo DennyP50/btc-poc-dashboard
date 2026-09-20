@@ -119,6 +119,29 @@ main { max-width: 1800px; margin: 0 auto; padding: 22px 28px 8px; }
 .Select-arrow { border-top-color: #7f8b9d !important; }
 
 .update-status { margin-left: auto; align-self: flex-end; padding-bottom: 6px; color: #667387; font: 500 10px/1 ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; white-space: nowrap; }
+.method-notice {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  color: #8d99aa;
+  background: rgba(247,147,26,.045);
+  border-bottom: 1px solid rgba(247,147,26,.15);
+  font-size: 10px;
+  line-height: 1.4;
+}
+.method-tag {
+  flex: 0 0 auto;
+  padding: 4px 6px;
+  color: #f5aa50;
+  background: rgba(247,147,26,.1);
+  border: 1px solid rgba(247,147,26,.2);
+  border-radius: 5px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
 #market-chart { min-height: 690px; }
 
 .side-panel { display: flex; flex-direction: column; }
@@ -166,6 +189,7 @@ footer { padding: 16px 4px 8px; display: flex; justify-content: space-between; g
   .metric-value { font-size: 18px; }
   .control-row { gap: 12px; flex-wrap: wrap; }
   .update-status { width: 100%; margin: 0; }
+  .method-notice { align-items: flex-start; }
   .side-panel { display: flex; }
   footer { flex-direction: column; gap: 5px; }
   .live-badge { display: none; }

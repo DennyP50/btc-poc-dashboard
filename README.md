@@ -4,6 +4,8 @@ Webová aplikace pro vizualizaci BTCUSDT perpetual futures, předchozího denní
 
 > POC/VA jsou aproximované z 1min svíček: objem každé svíčky se rozdělí přes její cenový rozsah. Přesný volume profile vyžaduje aggTrades/ticková data. Aplikace je analytická pomůcka, ne finanční doporučení.
 
+Volba `30D` načítá 30 celých dní grafové historie plus dvě pomocné session pro úroveň na levém okraji. Tabulka záměrně zobrazuje pouze osm nejnovějších dokončených UTC dnů.
+
 ## Lokální spuštění
 
 ```bash

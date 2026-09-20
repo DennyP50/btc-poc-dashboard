@@ -124,6 +124,13 @@ app.layout = html.Div(
                                         html.Div(id="update-status", className="update-status"),
                                     ],
                                 ),
+                                html.Div(
+                                    className="method-notice",
+                                    children=[
+                                        html.Span("ORIENTAČNÍ PROFIL", className="method-tag"),
+                                        html.Span("POC/VA jsou počítané z 1min svíček; objem svíčky se rozděluje přes její high–low. Nejde o přesný aggTrades profil."),
+                                    ],
+                                ),
                                 dcc.Loading(
                                     type="dot",
                                     color="#f7931a",
@@ -144,7 +151,7 @@ app.layout = html.Div(
                             children=[
                                 html.Div(
                                     className="panel-heading",
-                                    children=[html.Div([html.H2("Denní úrovně"), html.P("Nejnovější nahoře")])],
+                                    children=[html.Div([html.H2("Denní úrovně"), html.P("Posledních 8 dokončených UTC dnů")])],
                                 ),
                                 html.Div(id="levels-table", className="levels-table-wrap"),
                                 html.Div(
@@ -351,6 +358,10 @@ def update_dashboard(timeframe: str, days: int, bin_size: float, _refresh: int):
         levels = calculate_daily_levels(klines, float(bin_size))
         summary = summarize_market(klines, levels)
         figure = _build_chart(klines, levels, timeframe, int(days))
+        display_start = klines["ts"].max() - pd.Timedelta(days=int(days))
+        displayed_minutes = int(klines.loc[klines["ts"] >= display_start, "ts"].nunique())
+        expected_minutes = int(days) * 1440 + 1
+        coverage = min(100.0, displayed_minutes / expected_minutes * 100)
         direction = "+" if summary.change_24h_pct >= 0 else ""
         distance = "+" if summary.distance_to_poc_pct >= 0 else ""
         return (
@@ -365,7 +376,7 @@ def update_dashboard(timeframe: str, days: int, bin_size: float, _refresh: int):
             "Cena vůči včerejší value area",
             f"metric-value context-{summary.context_class}",
             _levels_table(levels, klines["ts"].max().floor("D")),
-            f"Data do {summary.updated_at.strftime('%H:%M')} UTC",
+            f"{int(days)}D · {coverage:.1f}% 1m dat · do {summary.updated_at.strftime('%H:%M')} UTC",
         )
     except (MarketDataError, ValueError, KeyError) as exc:
         message = str(exc)
