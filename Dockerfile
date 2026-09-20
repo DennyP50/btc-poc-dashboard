@@ -2,6 +2,8 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
+    DATABASE_PATH=/data/poc.sqlite3 \
+    AGGTRADES_CACHE=/data/aggtrades \
     PORT=8050
 
 WORKDIR /app
@@ -9,9 +11,10 @@ WORKDIR /app
 COPY requirements.txt ./
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
-    useradd --system --uid 10001 --create-home appuser
+    useradd --system --uid 10001 --create-home appuser && \
+    mkdir -p /data/aggtrades && chown -R appuser:appuser /data
 
-COPY --chown=appuser:appuser app.py poc_engine.py ./
+COPY --chown=appuser:appuser app.py poc_engine.py poc_store.py strategy_engine.py exact_poc.py strategy_job.py daily_exact_job.py context_data_job.py ./
 COPY --chown=appuser:appuser assets ./assets
 
 USER appuser

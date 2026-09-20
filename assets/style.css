@@ -98,7 +98,7 @@ main { max-width: 1800px; margin: 0 auto; padding: 22px 28px 8px; }
 .context-inside { color: #e5c76b; font-family: Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.03em; }
 .context-below { color: var(--red); font-family: Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.03em; }
 
-.workspace { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 14px; align-items: stretch; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) 430px; gap: 14px; align-items: stretch; }
 .chart-panel, .side-panel { border: 1px solid var(--border); border-radius: 14px; background: var(--panel); overflow: hidden; }
 .control-row { min-height: 70px; display: flex; align-items: center; gap: 24px; padding: 11px 16px; border-bottom: 1px solid var(--border); background: #0d131c; }
 .control-group label:first-child { display: block; margin: 0 0 7px; color: var(--muted); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
@@ -150,16 +150,25 @@ main { max-width: 1800px; margin: 0 auto; padding: 22px 28px 8px; }
 .panel-heading p { margin: 0; color: var(--muted); font-size: 10px; }
 .levels-table-wrap { min-height: 342px; }
 .levels-table { width: 100%; border-collapse: collapse; }
-.levels-table th { padding: 12px 8px; color: #667387; font-size: 8px; text-align: right; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid rgba(32,43,58,.8); }
+.levels-table th { padding: 12px 7px; color: #667387; font-size: 8px; text-align: right; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid rgba(32,43,58,.8); }
 .levels-table th:first-child, .levels-table td:first-child { padding-left: 16px; text-align: left; }
 .levels-table th:last-child, .levels-table td:last-child { padding-right: 14px; }
-.levels-table td { padding: 11px 8px; font: 500 10px/1 ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; text-align: right; border-bottom: 1px solid rgba(32,43,58,.55); }
+.levels-table td { padding: 10px 7px; font: 500 10px/1 ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; text-align: right; vertical-align: middle; border-bottom: 1px solid rgba(32,43,58,.55); }
+.levels-table td small { display: block; margin-top: 5px; color: #687588; font: 500 7px/1.2 Inter, ui-sans-serif, system-ui, sans-serif; white-space: nowrap; }
 .date-cell { color: #7f8b9d; }
 .poc-number { color: #f5a744; }
-.range-number { color: #aab4c2; font-size: 9px !important; }
 .level-state { display: inline-block; padding: 4px 5px; border-radius: 4px; font: 700 7px/1 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: .05em; }
 .level-state.naked { color: #e8c96e; background: rgba(244,201,93,.1); border: 1px solid rgba(244,201,93,.18); }
-.level-state.tested { color: #6f7c8e; background: rgba(127,139,157,.07); border: 1px solid rgba(127,139,157,.12); }
+.level-state.touched { color: #8b98aa; background: rgba(127,139,157,.07); border: 1px solid rgba(127,139,157,.12); }
+.state-cell { min-width: 68px; }
+.setup-cell { min-width: 116px; }
+.setup-state { display: inline-block; padding: 4px 6px; border-radius: 4px; font: 700 7px/1 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; white-space: nowrap; }
+.setup-state.naked { color: #e8c96e; background: rgba(244,201,93,.1); }
+.setup-state.confirmed { color: #72d7ed; background: rgba(49,200,230,.1); }
+.setup-state.waiting { color: #c4a7ff; background: rgba(176,132,255,.11); }
+.setup-state.entry { color: #79e0c0; background: rgba(34,201,151,.12); border: 1px solid rgba(34,201,151,.18); }
+.setup-state.expired { color: #778397; background: rgba(127,139,157,.07); }
+.setup-state.explore { color: #8d99aa; background: rgba(127,139,157,.08); }
 .table-error { margin: 16px; padding: 12px; border: 1px solid rgba(255,92,115,.25); border-radius: 8px; color: #ff8b9b; background: rgba(255,92,115,.06); font-size: 11px; line-height: 1.5; }
 
 .playbook { margin: auto 14px 14px; padding: 16px; border: 1px solid #1d2837; border-radius: 11px; background: #0d141e; }

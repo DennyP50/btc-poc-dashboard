@@ -6,6 +6,8 @@ __pycache__/
 .venv/
 venv/
 dv_cache/
+data/
+tmp_exact_test/
 *.csv
 *.html
 tests/
